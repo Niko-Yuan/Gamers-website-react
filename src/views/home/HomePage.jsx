@@ -5,6 +5,7 @@ import {
   Preloader,
   Tabs,
   Title,
+  ScrollButton,
 } from "../../components/common/index";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -75,7 +76,7 @@ const HomePage = () => {
       </section>
 
       <ImageSlider />
-      
+
       <section
         className="section sc-join d-flex align-items-center"
         style={{
@@ -139,6 +140,8 @@ const HomePage = () => {
           )}
         </div>
       </section>
+
+      <ScrollButton />
     </HomeWrapper>
   );
 };
@@ -186,4 +189,11 @@ const HomeWrapper = styled.div`
   .sc-stores {
     min-height: 841px;
   }
+
+  // .backTopButton {
+  //   position: absolute;
+  //   width: 80px;
+  //   height: 80px;
+  //   z-index: 100;
+  // }
 `;

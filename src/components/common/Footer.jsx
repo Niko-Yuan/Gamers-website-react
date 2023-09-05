@@ -1,6 +1,6 @@
-import { AiOutlineSend } from "react-icons/ai";
 import styled from "styled-components";
 import { logo_image } from "../../utils/images";
+import { AiOutlineSend } from "react-icons/ai";
 
 const Footer = () => {
   return (
