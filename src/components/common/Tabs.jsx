@@ -84,12 +84,12 @@ const TabsWrapper = styled.div`
     z-index: 99;
     padding-top: 60px;
     padding-bottom: 60px;
-    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
+    // box-shadow: rgba(0, 0, 0, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     transition: var(--transition-default);
 
     .tabs-buttons-close {
       position: absolute;
-      right: -32px;
+      right: 0px;
       top: 0;
       width: 32px;
       height: 32px;
@@ -150,5 +150,9 @@ const TabsWrapper = styled.div`
   .tabs-body {
     max-width: 1050px;
     margin-left: auto;
+  }
+
+  .tabs-content {
+    margin-left: 20px;
   }
 `;
