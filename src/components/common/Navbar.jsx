@@ -29,13 +29,6 @@ const Navbar = () => {
                 Gam <span>ers</span>
               </div>
             </Link>
-            <button
-              type="button"
-              className="navbar-show-btn text-white"
-              onClick={() => dispatch(setSidebarOn())}
-            >
-              <HiOutlineMenuAlt3 size={25} />
-            </button>
           </div>
           <div className={`navbar-collapse ${sidebarStatus ? "show" : " "}`}>
             <button
@@ -93,6 +86,20 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
+          <div className="navbar-right-section">
+            <span className="MeunMsg navbar-show-btn">Meun</span>
+            <button
+              type="button"
+              className="navbar-show-btn text-white"
+              onClick={() => dispatch(setSidebarOn())}
+            >
+              <HiOutlineMenuAlt3 size={25} />
+            </button>
+            <div className="user-section">
+              <img src="../../favicon.jpg" alt="User" className="user-img" />
+              <span className="user-name">user_name</span>
+            </div>
+          </div>
         </div>
       </div>
     </NavbarWrapper>
@@ -104,6 +111,13 @@ export default Navbar;
 const NavbarWrapper = styled.div`
   min-height: 78px;
   background: #090624;
+
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
 
   .logo_image {
     width: 100px;
@@ -195,7 +209,43 @@ const NavbarWrapper = styled.div`
     }
   }
 
-  @media screen and (min-width: 992px) {
+  .user-section {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+
+    .user-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .user-name {
+      font-size: 16px;
+      color: white;
+    }
+  }
+
+  .MeunMsg {
+    font-size: 16px;
+    color: white;
+  }
+
+  @media screen and (max-width: 1050px) {
+    .navbar-right-section {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 100%;
+    }
+
+    .user-section {
+      margin-left: 20px;
+    }
+  }
+
+  @media screen and (min-width: 1050px) {
     .navbar-show-btn {
       display: none;
     }
@@ -245,7 +295,7 @@ const NavbarWrapper = styled.div`
     }
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1255px) {
     .nav-link {
       padding-right: 16px;
       padding-left: 16px;
