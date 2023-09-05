@@ -75,7 +75,7 @@ const HomePage = () => {
       </section>
 
       <ImageSlider />
-
+      
       <section
         className="section sc-join d-flex align-items-center"
         style={{
@@ -146,6 +146,13 @@ const HomePage = () => {
 export default HomePage;
 
 const HomeWrapper = styled.div`
+  .game_background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z_index: -1;
+  }
+
   .sc-popular {
     background-color: var(--clr-violet-dark-active);
     .section-btn {
