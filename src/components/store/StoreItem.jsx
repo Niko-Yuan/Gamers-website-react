@@ -29,7 +29,7 @@ const StoreItem = ({ storeItem }) => {
           {storeItem?.games?.map((item) => {
             return (
               <li className="card-game" key={item.id}>
-                <Link to={`games/${item.id}`}>{item.name}</Link>
+                <Link to={`/games/${item.id}`}>{item.name}</Link>
               </li>
             );
           })}

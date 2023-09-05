@@ -35,7 +35,6 @@ const GenreItem = ({ gameItem }) => {
         <h4 className="text-white text-uppercase card-title">
           {gameData?.name}
         </h4>
-
         <div className="block-wrap">
           <div className="details-group">
             <div className="details-item d-flex align-items-center">
