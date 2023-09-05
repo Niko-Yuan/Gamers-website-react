@@ -1,5 +1,6 @@
 import { AiOutlineSend } from "react-icons/ai";
 import styled from "styled-components";
+import { logo_image } from "../../utils/images";
 
 const Footer = () => {
   return (
@@ -11,10 +12,13 @@ const Footer = () => {
               href="#"
               className="navbar-brand text-white text-uppercase no-wrap d-block"
             >
-              cool <span>games</span>
+              <div className="d-flex">
+                <img src={logo_image} alt="logo" className="logo_image" />
+                Gam <span>ers</span>
+              </div>
             </a>
             <p className="para-text">
-              This is a game website with fantastic gaming infomations!!!
+              This is a gaming infomation website for someone who want to learn and find out more desired video games!!!
             </p>
           </div>
 
@@ -128,6 +132,11 @@ const Footer = () => {
 export default Footer;
 
 const FooterWrapper = styled.footer`
+  .logo_image {
+    width: 100px;
+    height: auto;
+  }
+
   .footer-top {
     background-color: var(--clr-violet-darker);
     padding: 78px 0;
