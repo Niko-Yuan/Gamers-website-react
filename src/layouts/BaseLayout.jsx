@@ -1,6 +1,6 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import { Navbar, Footer } from "../components/common/index"
+import React from "react";
+import { Outlet } from "react-router-dom";
+import { Navbar, Footer } from "../components/common/index";
 
 const BaseLayout = () => {
   return (
@@ -9,7 +9,7 @@ const BaseLayout = () => {
       <Outlet />
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default BaseLayout
+export default BaseLayout;

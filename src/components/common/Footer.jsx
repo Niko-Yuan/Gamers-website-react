@@ -1,53 +1,180 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import { logo_image } from "../../utils/images";
+import { AiOutlineSend } from "react-icons/ai";
 
 const Footer = () => {
   return (
     <FooterWrapper>
+      <div className="footer-top">
+        <div className="footer-content text-white d-grid container">
+          <div className="footer-item">
+            <a
+              href="#"
+              className="navbar-brand text-white text-uppercase no-wrap d-block"
+            >
+              <div className="d-flex">
+                <img src={logo_image} alt="logo" className="logo_image" />
+                Gam <span>ers</span>
+              </div>
+            </a>
+            <p className="para-text">
+              This is a gaming infomation website for someone who want to learn and find out more desired video games!!!
+            </p>
+          </div>
+
+          <div className="footer-item">
+            <h5 className="footer-item-title text-uppercase">quick links</h5>
+            <ul className="footer-item-links">
+              <li>
+                <a href="#" className="text-white">
+                  Gaming
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-white">
+                  Product
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-white">
+                  Social Network
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-white">
+                  Community
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="footer-item">
+            <h5 className="footer-item-title text-uppercase">Supports</h5>
+            <ul className="footer-item-links">
+              <li>
+                <a href="#" className="text-white">
+                  Setting & Privacy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-white">
+                  Help & Support
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-white">
+                  Live Actions
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-white">
+                  Our News
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="footer-item">
+            <h5 className="footer-item-title text-uppercase">newsletter</h5>
+            <p className="para-text">
+              Subscribe our newsletter to get our latest update & news.
+            </p>
+
+            <form className="newsletter-form">
+              <div className="input-group d-flex align-items-stretch">
+                <input
+                  type="text"
+                  className="input-group-field"
+                  placeholder="Your email address"
+                />
+                <button className="input-group-btn bg-white d-inline-flex align-items-center justify-content-center">
+                  <AiOutlineSend size={18} />
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div className="footer-bottom">
+        <div className="container d-flex flex-column text-center">
+          <p className="footer-bottom-text text-green">
+            Copyright &copy; 2023 Fangqi Yuan - All rights reserved.
+          </p>
+          <ul className="footer-bottom-links d-flex justif-content-center">
+            <li>
+              <a href="#" className="text-white">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#" className="text-white">
+                Help Center
+              </a>
+            </li>
+            <li>
+              <a href="#" className="text-white">
+                Contact
+              </a>
+            </li>
+            <li>
+              <a href="#" className="text-white">
+                Terms & conditions
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </FooterWrapper>
-  )
-}
+  );
+};
 
 export default Footer;
 
 const FooterWrapper = styled.footer`
-  .footer-top{
+  .logo_image {
+    width: 100px;
+    height: auto;
+  }
+
+  .footer-top {
     background-color: var(--clr-violet-darker);
     padding: 78px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
   }
 
-  .footer-content{
+  .footer-content {
     row-gap: 24px;
   }
 
-  .navbar-brand{
+  .navbar-brand {
     font-weight: 700;
     font-size: 32px;
     margin-bottom: 18px;
 
-    span{
+    span {
       color: var(--clr-green-normal);
     }
   }
 
-  .footer-item{
+  .footer-item {
     text-align: center;
 
-    .para-text{
+    .para-text {
       max-width: 380px;
       margin-right: auto;
       margin-left: auto;
     }
   }
 
-  .footer-item-links{
-    li{
+  .footer-item-links {
+    li {
       margin: 6px 0;
 
-      a{
+      a {
         color: rgba(255, 255, 255, 0.9);
 
-        &:hover{
+        &:hover {
           color: var(--clr-white);
           text-decoration: underline;
         }
@@ -55,17 +182,17 @@ const FooterWrapper = styled.footer`
     }
   }
 
-  .footer-item-title{
+  .footer-item-title {
     margin-bottom: 12px;
     font-size: 20px;
     letter-spacing: 0.03em;
     font-weight: 700;
   }
 
-  .newsletter-form{
+  .newsletter-form {
     margin-top: 18px;
 
-    .input-group{
+    .input-group {
       height: 48px;
       max-width: 284px;
       width: 100%;
@@ -73,94 +200,94 @@ const FooterWrapper = styled.footer`
       margin-left: auto;
       transition: var(--transition-default);
 
-      :has(.input-group-field:focus){
+      :has(.input-group-field:focus) {
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
       }
 
-      &-field{
-        background: #0C0A24;
+      &-field {
+        background: #0c0a24;
         padding-left: 22px;
         padding-right: 22px;
         color: var(--clr-white);
         flex: 1;
 
-        &::placeholder{
+        &::placeholder {
           color: var(--clr-white);
           opacity: 0.8;
         }
       }
 
-      &-btn{
-        color: #0C0A24;
+      &-btn {
+        color: #0c0a24;
         width: 48px;
 
-        &:hover{
+        &:hover {
           transform: scale(1.1);
         }
       }
     }
   }
 
-  .footer-bottom{
-    background: #04020E;
+  .footer-bottom {
+    background: #04020e;
     padding: 20px 0;
-    &-text{
+    &-text {
       font-weight: 500;
     }
 
-    li{
+    li {
       margin-left: 18px;
     }
 
-    &-links{
+    &-links {
       margin-top: 12px;
     }
   }
 
-  @media screen and (min-width: 768px){
-    .footer-content{
+  @media screen and (min-width: 768px) {
+    .footer-content {
       grid-template-columns: repeat(2, 1fr);
       column-gap: 32px;
 
-      .footer-item{
+      .footer-item {
         text-align: left;
 
-        .para-text{
+        .para-text {
           margin-left: 0;
         }
       }
 
-      .input-group{
+      .input-group {
         margin-left: 0;
       }
     }
 
-    .footer-bottom{
-      & > .container{
+    .footer-bottom {
+      & > .container {
         flex-direction: var(--clr-white);
         justify-content: space-between;
       }
 
-      li{
+      li {
         margin-left: 32px;
       }
-      &-links{
-          margin-top: 0;
-        }
+      &-links {
+        margin-top: 0;
+      }
     }
   }
 
-  @media screen and (min-width: 992px){
+  @media screen and (min-width: 992px) {
     flex-direction: row;
     text-align: center;
 
-    .footer-bottom-links{
+    .footer-bottom-links {
       justify-content: center;
     }
   }
 
-  @media screen and (min-width: 1200px){
-    .footer-content{
+  @media screen and (min-width: 1200px) {
+    .footer-content {
       grid-template-columns: 3fr 2fr 2fr 3fr;
     }
   }

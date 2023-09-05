@@ -9,6 +9,7 @@ import {
   setSidebarOn,
   setSidebarOff,
 } from "../../redux/store/sidebarSlice";
+import { logo_image } from "../../utils/images";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,10 @@ const Navbar = () => {
               to="/"
               className="navbar-brand text-white text-uppercase no-wrap"
             >
-              cool <span>games</span>
+              <div className="d-flex">
+                <img src={logo_image} alt="logo" className="logo_image" />
+                Gam <span>ers</span>
+              </div>
             </Link>
             <button
               type="button"
@@ -100,6 +104,11 @@ export default Navbar;
 const NavbarWrapper = styled.div`
   min-height: 78px;
   background: #090624;
+
+  .logo_image {
+    width: 100px;
+    height: auto;
+  }
 
   .navbar-brand {
     font-weight: 700;
