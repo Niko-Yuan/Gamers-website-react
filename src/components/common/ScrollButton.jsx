@@ -48,7 +48,7 @@ const ScrollButtonWrapper = styled.div`
   margin: 0;
   padding: 0;
   position: fixed;
-  left: 95%;
+  right: 10px;
   bottom: 20%;
   font-size: 3rem;
   color: white;

@@ -7,6 +7,9 @@ import {
   ViewStoreAll,
   ViewStoreDetails,
   ViewCreatorAll,
+  Login,
+  Register,
+  Profile,
 } from "../views/index";
 import BaseLayout from "../layouts/BaseLayout";
 
@@ -14,8 +17,12 @@ const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<BaseLayout />}>
+        <Route element={<BaseLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/error" element={<Error />} />
           <Route path="/games" element={<ViewGameAll />} />
           <Route path="/games/:gameId" element={<ViewGameDetails />} />
