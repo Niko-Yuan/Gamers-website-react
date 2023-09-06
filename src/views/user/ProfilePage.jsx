@@ -1,6 +1,7 @@
 import React from "react";
 import { Navigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
+import styled from "styled-components";
 
 const ProfilePage = () => {
   const { user: currentUser } = useSelector((state) => state.auth);
