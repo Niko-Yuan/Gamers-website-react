@@ -71,9 +71,9 @@ const LoginPage = () => {
   };
 
   const handleDemoLogin = () => {
-    setUsername("ezma");
-    setPassword("123456");
-    dispatch(login("ezma", "123456"))
+    setUsername("demoUser");
+    setPassword("demoUser");
+    dispatch(login("demoUser", "demoUser"))
       .then(() => {
         navigate("/home");
         window.location.reload();
