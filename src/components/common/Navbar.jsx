@@ -293,6 +293,10 @@ const NavbarWrapper = styled.div`
 
       .nav-link {
         color: white;
+
+        &:hover {
+          color: var(--clr-pink-normal);
+        }
       }
     }
 
