@@ -75,7 +75,6 @@ const LoginPage = () => {
   }
 
   const particlesInit = useCallback(async (engine) => {
-    // console.log(engine);
     await loadSlim(engine);
   }, []);
 
