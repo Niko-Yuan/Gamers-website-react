@@ -1,5 +1,5 @@
 <div align='center'>
-  <img style={{ width: '30%' }} src='URL_TO_YOUR_IMAGE' alt='Image Description' />
+  <img style={{ width: '30%' }} src='/public/screenshots/logo.png' alt='Image Description' />
 </div>
 
 <h1>About the project</h1>
@@ -31,11 +31,11 @@
 <h3 align='center'>Login Page 🏡</h3>
 
 <div align='center'>
-    <img src='URL_TO_YOUR_IMAGE' alt='Homepage' />
+    <img src='/public/screenshots/loginpage.png' alt='Loginpage' />
 </div>
 
 <h3 align='center'>Home Page 🏡</h3>
 
 <div align='center'>
-    <img src='URL_TO_YOUR_IMAGE' alt='Homepage' />
+    <img src='/public/screenshots/homepage.png' alt='Homepage' />
 </div>
