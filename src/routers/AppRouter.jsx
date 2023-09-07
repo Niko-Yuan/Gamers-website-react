@@ -24,13 +24,10 @@ const AppRouter = () => {
     <BrowserRouter>
       <Routes>
         <Route element={<BaseLayout />}>
-          {/* <Route path="/" element={<RootRedirect isLoggedIn={isLoggedIn} />} /> */}
-          <Route path="/" element={<Home/> } />
+          <Route path="/" element={<RootRedirect isLoggedIn={isLoggedIn} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/games" element={<ViewGameAll />} />
-          {/* <Route
+          <Route
             path="/profile"
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn}>
@@ -85,7 +82,7 @@ const AppRouter = () => {
                 <ViewCreatorAll />
               </ProtectedRoute>
             }
-          /> */}
+          />
           <Route path="/error" element={<Error />} />
           <Route path="*" element={<Error />} />
         </Route>
