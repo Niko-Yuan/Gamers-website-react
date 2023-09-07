@@ -91,9 +91,7 @@ const LoginPage = () => {
     await loadSlim(engine);
   }, []);
 
-  const particlesLoaded = useCallback(async (container) => {
-    await console.log(container);
-  }, []);
+  const particlesLoaded = useCallback(() => {}, []);
 
   return (
     <LoginPageWrapper>
