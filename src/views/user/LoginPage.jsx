@@ -274,8 +274,8 @@ const LoginPageWrapper = styled.div`
   .form-control {
     width: 100%;
     box-sizing: border-box;
-    height: 32px;
-    font-size: 18px;
+    height: 35px;
+    font-size: 15px;
     padding: 10px;
   }
 

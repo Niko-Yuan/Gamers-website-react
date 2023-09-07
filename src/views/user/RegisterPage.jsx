@@ -28,7 +28,10 @@ const required = (value) => {
 const validEmail = (value) => {
   if (!isEmail(value)) {
     return (
-      <div className="alert alert-danger" role="alert">
+      <div className="custom-alert" role="alert">
+        <i className="alert-icon">
+          <FontAwesomeIcon icon={faExclamationCircle} />
+        </i>
         This is not a valid email.
       </div>
     );
@@ -38,7 +41,10 @@ const validEmail = (value) => {
 const vusername = (value) => {
   if (value.length < 3 || value.length > 20) {
     return (
-      <div className="alert alert-danger" role="alert">
+      <div className="custom-alert" role="alert">
+        <i className="alert-icon">
+          <FontAwesomeIcon icon={faExclamationCircle} />
+        </i>
         The username must be between 3 and 20 characters.
       </div>
     );
@@ -48,7 +54,10 @@ const vusername = (value) => {
 const vpassword = (value) => {
   if (value.length < 6 || value.length > 40) {
     return (
-      <div className="alert alert-danger" role="alert">
+      <div className="custom-alert" role="alert">
+        <i className="alert-icon">
+          <FontAwesomeIcon icon={faExclamationCircle} />
+        </i>
         The password must be between 6 and 40 characters.
       </div>
     );
@@ -88,19 +97,14 @@ const RegisterPage = () => {
     setSuccessful(false);
     form.current.validateAll();
     if (checkBtn.current.context._errors.length === 0) {
-      console.log("Dispatching register action"); // Debugging log
       dispatch(register(username, email, password))
         .then(() => {
-          console.log("Registration successful"); // Debugging log
           setSuccessful(true);
           navigate("/login");
         })
         .catch((error) => {
-          console.log("Registration failed", error); // Debugging log
           setSuccessful(false);
         });
-    } else {
-      console.log("Validation errors exist"); // Debugging log
     }
   };
 
@@ -236,7 +240,13 @@ const RegisterPage = () => {
                 </div>
 
                 <div className="form-group">
-                  <button type="submit" aria-label="btn-register" className="register-btn">Sign Up</button>
+                  <button
+                    type="submit"
+                    aria-label="btn-register"
+                    className="register-btn"
+                  >
+                    Sign Up
+                  </button>
                 </div>
               </div>
             )}

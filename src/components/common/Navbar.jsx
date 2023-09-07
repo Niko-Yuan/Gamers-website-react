@@ -188,17 +188,22 @@ const NavbarWrapper = styled.div`
     width: 100%;
   }
 
-  .logo_image {
-    width: 100px;
-    height: auto;
-  }
+  .brand-and-toggler {
+    font-size: 2.5vw;
 
-  .navbar-brand {
-    font-weight: 700;
-    font-size: 32px;
+    .navbar-brand {
+      font-weight: 700;
+      font-size: inherit;
 
-    span {
-      color: var(--clr-green-normal);
+      .logo_image {
+        width: 7.3vw;
+        height: auto;
+        min-width: 50px;
+      }
+
+      span {
+        color: var(--clr-green-normal);
+      }
     }
   }
 
@@ -359,6 +364,9 @@ const NavbarWrapper = styled.div`
   }
 
   @media screen and (min-width: 1125px) {
+    .brand-and-toggler {
+      font-size: 3vw;
+    }
     .navbar-show-btn {
       display: none;
     }
