@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useCallback } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { BsRssFill, BsSteam, BsTwitch, BsYoutube } from "react-icons/bs";
 import { MdClose } from "react-icons/md";
@@ -10,10 +11,37 @@ import {
   setSidebarOff,
 } from "../../redux/store/sidebarSlice";
 import { logo_image } from "../../utils/images";
+import { logout } from "../../actions/auth";
+import { clearMessage } from "../../actions/message";
+
+import EventBus from "../../common/EventBus";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const sidebarStatus = useSelector(selectSidebarStatus);
+
+  const { user: currentUser } = useSelector((state) => state.auth);
+  let location = useLocation();
+
+  useEffect(() => {
+    if (["/login", "/register"].includes(location.pathname)) {
+      dispatch(clearMessage());
+    }
+  }, [dispatch, location]);
+
+  const logOut = useCallback(() => {
+    dispatch(logout());
+  }, [dispatch]);
+
+  useEffect(() => {
+    EventBus.on("logout", () => {
+      logOut();
+    });
+
+    return () => {
+      EventBus.remove("logout");
+    };
+  }, [currentUser, logOut]);
 
   return (
     <NavbarWrapper className="d-flex align-items-center">
@@ -95,10 +123,33 @@ const Navbar = () => {
             >
               <HiOutlineMenuAlt3 size={25} />
             </button>
-            <div className="user-section">
-              <img src="../../favicon.jpg" alt="User" className="user-img" />
-              <span className="user-name">user_name</span>
-            </div>
+            {currentUser ? (
+              <div className="user-section">
+                <li className="nav-item">
+                  <Link to={"/profile"} className="nav-link">
+                    {currentUser.username}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <a href="/login" className="nav-link" onClick={logOut}>
+                    LogOut
+                  </a>
+                </li>
+              </div>
+            ) : (
+              <div className="user-section">
+                <li className="nav-item">
+                  <Link to="/login" className="nav-link">
+                    Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/register" className="nav-link">
+                    Sign Up
+                  </Link>
+                </li>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -224,6 +275,15 @@ const NavbarWrapper = styled.div`
     .user-name {
       font-size: 16px;
       color: white;
+    }
+
+    .nav-item {
+      list-style: none;
+      margin-right: 1.5rem;
+
+      .nav-link {
+        color: white;
+      }
     }
   }
 
