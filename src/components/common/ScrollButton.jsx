@@ -48,7 +48,7 @@ const ScrollButtonWrapper = styled.div`
   margin: 0;
   padding: 0;
   position: fixed;
-  left: 95%;
+  right: 10px;
   bottom: 20%;
   font-size: 3rem;
   color: white;
@@ -69,6 +69,7 @@ const ScrollButtonWrapper = styled.div`
   .scrollMsg {
     writing-mode: vertical-rl;
     user-select: none;
+    -webkit-user-select: none;
     font-size: 2.2rem;
     text-align: center;
     margin-left: 5px;

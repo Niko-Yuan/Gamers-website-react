@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useCallback } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { BsRssFill, BsSteam, BsTwitch, BsYoutube } from "react-icons/bs";
 import { MdClose } from "react-icons/md";
@@ -10,10 +11,37 @@ import {
   setSidebarOff,
 } from "../../redux/store/sidebarSlice";
 import { logo_image } from "../../utils/images";
+import { logout } from "../../actions/auth";
+import { clearMessage } from "../../actions/message";
+
+import EventBus from "../../common/EventBus";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const sidebarStatus = useSelector(selectSidebarStatus);
+
+  const { user: currentUser } = useSelector((state) => state.auth);
+  let location = useLocation();
+
+  useEffect(() => {
+    if (["/login", "/register"].includes(location.pathname)) {
+      dispatch(clearMessage());
+    }
+  }, [dispatch, location]);
+
+  const logOut = useCallback(() => {
+    dispatch(logout());
+  }, [dispatch]);
+
+  useEffect(() => {
+    EventBus.on("logout", () => {
+      logOut();
+    });
+
+    return () => {
+      EventBus.remove("logout");
+    };
+  }, [currentUser, logOut]);
 
   return (
     <NavbarWrapper className="d-flex align-items-center">
@@ -21,7 +49,7 @@ const Navbar = () => {
         <div className="navbar-content">
           <div className="brand-and-toggler d-flex align-items-center justify-content-between">
             <Link
-              to="/"
+              to="/home"
               className="navbar-brand text-white text-uppercase no-wrap"
             >
               <div className="d-flex">
@@ -29,70 +57,118 @@ const Navbar = () => {
                 Gam <span>ers</span>
               </div>
             </Link>
-            <button
-              type="button"
-              className="navbar-show-btn text-white"
-              onClick={() => dispatch(setSidebarOn())}
-            >
-              <HiOutlineMenuAlt3 size={25} />
-            </button>
           </div>
-          <div className={`navbar-collapse ${sidebarStatus ? "show" : " "}`}>
-            <button
-              type="button"
-              className="navbar-hide-btn"
-              onClick={() => dispatch(setSidebarOff())}
-            >
-              <MdClose size={25} />
-            </button>
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link to="/" className="nav-link">
-                  home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/creators" className="nav-link">
-                  creators
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/stores" className="nav-link">
-                  stores
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/games" className="nav-link">
-                  games
-                </Link>
-              </li>
-            </ul>
-            <ul className="connect-list d-flex justify-content-center align-items-center mt-5 flex-wrap">
-              <li className="text-uppercase fw-7 w-100 connect-text mb-2">
-                connect
-              </li>
-              <li className="connect-item">
-                <Link to="/" className="connect-link">
-                  <BsRssFill />
-                </Link>
-              </li>
-              <li className="connect-item">
-                <Link to="/" className="connect-link">
-                  <BsSteam size={18} />
-                </Link>
-              </li>
-              <li className="connect-item">
-                <Link to="/" className="connect-link">
-                  <BsTwitch size={18} />
-                </Link>
-              </li>
-              <li className="connect-item">
-                <Link to="/" className="connect-link">
-                  <BsYoutube size={19} />
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {currentUser ? (
+            <div className={`navbar-collapse ${sidebarStatus ? "show" : " "}`}>
+              <button
+                type="button"
+                className="navbar-hide-btn"
+                aria-label="navbar-collapse"
+                onClick={() => dispatch(setSidebarOff())}
+              >
+                <MdClose size={25} />
+              </button>
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <Link to="/home" className="nav-link">
+                    home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/creators" className="nav-link">
+                    creators
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/stores" className="nav-link">
+                    stores
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/games" className="nav-link">
+                    games
+                  </Link>
+                </li>
+              </ul>
+              <ul className="connect-list d-flex justify-content-center align-items-center mt-5">
+                <li className="text-uppercase fw-7 w-100 connect-text mb-2">
+                  connect
+                </li>
+                <li className="connect-item">
+                  <Link to="/" className="connect-link">
+                    <BsRssFill />
+                  </Link>
+                </li>
+                <li className="connect-item">
+                  <Link to="/" className="connect-link">
+                    <BsSteam size={18} />
+                  </Link>
+                </li>
+                <li className="connect-item">
+                  <Link to="/" className="connect-link">
+                    <BsTwitch size={18} />
+                  </Link>
+                </li>
+                <li className="connect-item">
+                  <Link to="/" className="connect-link">
+                    <BsYoutube size={19} />
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <></>
+          )}
+          {currentUser ? (
+            <div className="navbar-right-section">
+              <span className="MeunMsg navbar-show-btn">Meun</span>
+              <button
+                type="button"
+                className="navbar-show-btn text-white"
+                aria-label="Meun"
+                onClick={() => dispatch(setSidebarOn())}
+              >
+                <HiOutlineMenuAlt3 size={25} />
+              </button>
+
+              <div className="user-section">
+                <ul className="user-section-list">
+                  <li className="nav-item user-section-info">
+                    <img
+                      src="favicon.jpg"
+                      alt="user-img"
+                      className="user-section-img"
+                    />
+                    <Link to="/profile" className="nav-link">
+                      {currentUser.username}
+                    </Link>
+                  </li>
+                  <li className="nav-item user-section-text">
+                    <a href="/login" className="nav-link" onClick={logOut}>
+                      LogOut
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <div className="navbar-right-section">
+              <div className="user-section">
+                <ul className="user-section-list">
+                  <li className="nav-item user-section-text user-login">
+                    <Link to="/login" className="nav-link">
+                      Login
+                    </Link>
+                  </li>
+                  <li className="nav-item user-section-text user-signup">
+                    <Link to="/register" className="nav-link">
+                      Sign Up
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </NavbarWrapper>
@@ -105,17 +181,29 @@ const NavbarWrapper = styled.div`
   min-height: 78px;
   background: #090624;
 
-  .logo_image {
-    width: 100px;
-    height: auto;
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
   }
 
-  .navbar-brand {
-    font-weight: 700;
-    font-size: 32px;
+  .brand-and-toggler {
+    font-size: 2.5vw;
 
-    span {
-      color: var(--clr-green-normal);
+    .navbar-brand {
+      font-weight: 700;
+      font-size: inherit;
+
+      .logo_image {
+        width: 7.3vw;
+        height: auto;
+        min-width: 50px;
+      }
+
+      span {
+        color: var(--clr-green-normal);
+      }
     }
   }
 
@@ -195,7 +283,94 @@ const NavbarWrapper = styled.div`
     }
   }
 
-  @media screen and (min-width: 992px) {
+  .user-section {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+
+    .nav-item {
+      list-style: none;
+
+      .nav-link {
+        color: white;
+
+        &:hover {
+          color: var(--clr-pink-normal);
+        }
+      }
+    }
+
+    .user-section-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-end;
+      align-items: center;
+
+      .user-section-info {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+
+        .user-section-img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      .user-login {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .MeunMsg {
+    font-size: 16px;
+    color: white;
+  }
+
+  @media screen and (max-width: 1125px) {
+    .navbar-right-section {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 100%;
+    }
+
+    .user-section {
+      margin-left: 10px;
+
+      .user-section-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        align-items: center;
+
+        .user-section-info {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: center;
+          align-items: center;
+          margin-right: 10px;
+
+          .user-section-img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 1125px) {
+    .brand-and-toggler {
+      font-size: 3vw;
+    }
     .navbar-show-btn {
       display: none;
     }
@@ -215,11 +390,11 @@ const NavbarWrapper = styled.div`
       align-items: center;
       justify-content: space-between;
     }
-    .nav-item {
-      margin-left: 6px;
-    }
     .navbar-nav {
       display: flex;
+      .nav-item {
+        margin-left: 10px;
+      }
     }
     .navbar-hide-btn {
       display: none;
@@ -245,7 +420,7 @@ const NavbarWrapper = styled.div`
     }
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1350px) {
     .nav-link {
       padding-right: 16px;
       padding-left: 16px;

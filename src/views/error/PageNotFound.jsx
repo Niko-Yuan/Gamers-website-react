@@ -9,7 +9,7 @@ const PageNotFound = () => {
         <p className="not-found-text text-uppercase text-white">
           page not found
         </p>
-        <Link to="/" className="section-btn">
+        <Link to="/home" className="section-btn">
           go to homepage
         </Link>
       </div>

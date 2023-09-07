@@ -189,11 +189,4 @@ const HomeWrapper = styled.div`
   .sc-stores {
     min-height: 841px;
   }
-
-  // .backTopButton {
-  //   position: absolute;
-  //   width: 80px;
-  //   height: 80px;
-  //   z-index: 100;
-  // }
 `;

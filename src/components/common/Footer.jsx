@@ -12,13 +12,14 @@ const Footer = () => {
               href="#"
               className="navbar-brand text-white text-uppercase no-wrap d-block"
             >
-              <div className="d-flex">
+              <div className="footer-logo d-flex">
                 <img src={logo_image} alt="logo" className="logo_image" />
                 Gam <span>ers</span>
               </div>
             </a>
             <p className="para-text">
-              This is a gaming infomation website for someone who want to learn and find out more desired video games!!!
+              This is a gaming infomation website for someone who want to learn
+              and find out more desired video games!!!
             </p>
           </div>
 
@@ -80,14 +81,17 @@ const Footer = () => {
               Subscribe our newsletter to get our latest update & news.
             </p>
 
-            <form className="newsletter-form">
+            <form id="newsletter-form" className="newsletter-form">
               <div className="input-group d-flex align-items-stretch">
                 <input
                   type="text"
                   className="input-group-field"
                   placeholder="Your email address"
                 />
-                <button className="input-group-btn bg-white d-inline-flex align-items-center justify-content-center">
+                <button
+                  aria-label="send-subscribe"
+                  className="input-group-btn bg-white d-inline-flex align-items-center justify-content-center"
+                >
                   <AiOutlineSend size={18} />
                 </button>
               </div>
@@ -241,6 +245,13 @@ const FooterWrapper = styled.footer`
 
     &-links {
       margin-top: 12px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .footer-logo {
+      justify-content: center;
+      align-items: center;
     }
   }
 
