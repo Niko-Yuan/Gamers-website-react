@@ -93,12 +93,14 @@ const RegisterPage = () => {
   };
 
   const handleRegister = (e) => {
+    console.log("handleRegister start");
     e.preventDefault();
     setSuccessful(false);
     form.current.validateAll();
     if (checkBtn.current.context._errors.length === 0) {
       dispatch(register(username, email, password))
         .then(() => {
+          console.log("[handleRegister]: successful registered");
           setSuccessful(true);
           navigate("/login");
         })
