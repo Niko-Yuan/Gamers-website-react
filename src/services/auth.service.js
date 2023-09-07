@@ -10,6 +10,8 @@ const register = (username, email, password, roles) => {
       email,
       password,
       roles,
+    }).then((response) => {
+      console.log("Success:", response.data);
     })
     .catch((error) => {
       console.log("Error:", error);
