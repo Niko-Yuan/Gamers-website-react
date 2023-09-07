@@ -59,8 +59,8 @@ const LoginPage = () => {
     if (checkBtn.current.context._errors.length === 0) {
       dispatch(login(username, password))
         .then(() => {
-          // navigate("/home");
-          // window.location.reload();
+          navigate("/home");
+          window.location.reload();
         })
         .catch(() => {
           setLoading(false);
@@ -72,21 +72,18 @@ const LoginPage = () => {
 
   const handleDemoLogin = async () => {
     try {
-      console.log("Demo Button Click");
       await dispatch(login("demoUser", "demoUser"));
-      console.log("Before Navigate");
       navigate("/home");
-      // window.location.reload();
-      console.log("After Navigate");
+      window.location.reload();
     } catch (error) {
       console.error("Error during dispatch:", error);
       setLoading(false);
     }
   };
 
-  // if (isLoggedIn) {
-  //   return <Navigate to="/home" />;
-  // }
+  if (isLoggedIn) {
+    return <Navigate to="/home" />;
+  }
 
   // const particlesInit = useCallback(async (engine) => {
   //   await loadSlim(engine);
