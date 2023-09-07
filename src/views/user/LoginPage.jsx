@@ -76,7 +76,7 @@ const LoginPage = () => {
       await dispatch(login("demoUser", "demoUser"));
       console.log("Before Navigate");
       // navigate("/home");
-      // window.location.reload();
+      window.location.reload();
       console.log("After Navigate");
     } catch (error) {
       console.error("Error during dispatch:", error);
