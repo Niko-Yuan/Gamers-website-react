@@ -49,7 +49,7 @@ const Navbar = () => {
         <div className="navbar-content">
           <div className="brand-and-toggler d-flex align-items-center justify-content-between">
             <Link
-              to="/"
+              to="/home"
               className="navbar-brand text-white text-uppercase no-wrap"
             >
               <div className="d-flex">
@@ -58,75 +58,80 @@ const Navbar = () => {
               </div>
             </Link>
           </div>
-          <div className={`navbar-collapse ${sidebarStatus ? "show" : " "}`}>
-            <button
-              type="button"
-              className="navbar-hide-btn"
-              onClick={() => dispatch(setSidebarOff())}
-            >
-              <MdClose size={25} />
-            </button>
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link to="/" className="nav-link">
-                  home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/creators" className="nav-link">
-                  creators
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/stores" className="nav-link">
-                  stores
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/games" className="nav-link">
-                  games
-                </Link>
-              </li>
-            </ul>
-            <ul className="connect-list d-flex justify-content-center align-items-center mt-5 flex-wrap">
-              <li className="text-uppercase fw-7 w-100 connect-text mb-2">
-                connect
-              </li>
-              <li className="connect-item">
-                <Link to="/" className="connect-link">
-                  <BsRssFill />
-                </Link>
-              </li>
-              <li className="connect-item">
-                <Link to="/" className="connect-link">
-                  <BsSteam size={18} />
-                </Link>
-              </li>
-              <li className="connect-item">
-                <Link to="/" className="connect-link">
-                  <BsTwitch size={18} />
-                </Link>
-              </li>
-              <li className="connect-item">
-                <Link to="/" className="connect-link">
-                  <BsYoutube size={19} />
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="navbar-right-section">
-            <span className="MeunMsg navbar-show-btn">Meun</span>
-            <button
-              type="button"
-              className="navbar-show-btn text-white"
-              onClick={() => dispatch(setSidebarOn())}
-            >
-              <HiOutlineMenuAlt3 size={25} />
-            </button>
-            {currentUser ? (
+          {currentUser ? (
+            <div className={`navbar-collapse ${sidebarStatus ? "show" : " "}`}>
+              <button
+                type="button"
+                className="navbar-hide-btn"
+                onClick={() => dispatch(setSidebarOff())}
+              >
+                <MdClose size={25} />
+              </button>
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <Link to="/home" className="nav-link">
+                    home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/creators" className="nav-link">
+                    creators
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/stores" className="nav-link">
+                    stores
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/games" className="nav-link">
+                    games
+                  </Link>
+                </li>
+              </ul>
+              <ul className="connect-list d-flex justify-content-center align-items-center mt-5">
+                <li className="text-uppercase fw-7 w-100 connect-text mb-2">
+                  connect
+                </li>
+                <li className="connect-item">
+                  <Link to="/" className="connect-link">
+                    <BsRssFill />
+                  </Link>
+                </li>
+                <li className="connect-item">
+                  <Link to="/" className="connect-link">
+                    <BsSteam size={18} />
+                  </Link>
+                </li>
+                <li className="connect-item">
+                  <Link to="/" className="connect-link">
+                    <BsTwitch size={18} />
+                  </Link>
+                </li>
+                <li className="connect-item">
+                  <Link to="/" className="connect-link">
+                    <BsYoutube size={19} />
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <></>
+          )}
+          {currentUser ? (
+            <div className="navbar-right-section">
+              <span className="MeunMsg navbar-show-btn">Meun</span>
+              <button
+                type="button"
+                className="navbar-show-btn text-white"
+                onClick={() => dispatch(setSidebarOn())}
+              >
+                <HiOutlineMenuAlt3 size={25} />
+              </button>
+
               <div className="user-section">
                 <li className="nav-item">
-                  <Link to={"/profile"} className="nav-link">
+                  <Link to="/profile" className="nav-link">
                     {currentUser.username}
                   </Link>
                 </li>
@@ -136,7 +141,9 @@ const Navbar = () => {
                   </a>
                 </li>
               </div>
-            ) : (
+            </div>
+          ) : (
+            <div className="navbar-right-section">
               <div className="user-section">
                 <li className="nav-item">
                   <Link to="/login" className="nav-link">
@@ -149,8 +156,8 @@ const Navbar = () => {
                   </Link>
                 </li>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </NavbarWrapper>
