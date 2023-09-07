@@ -63,6 +63,7 @@ const Navbar = () => {
               <button
                 type="button"
                 className="navbar-hide-btn"
+                aria-label="navbar-collapse"
                 onClick={() => dispatch(setSidebarOff())}
               >
                 <MdClose size={25} />
@@ -124,22 +125,26 @@ const Navbar = () => {
               <button
                 type="button"
                 className="navbar-show-btn text-white"
+                aria-label="Meun"
                 onClick={() => dispatch(setSidebarOn())}
               >
                 <HiOutlineMenuAlt3 size={25} />
               </button>
 
               <div className="user-section">
-                <li className="nav-item">
-                  <Link to="/profile" className="nav-link">
-                    {currentUser.username}
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <a href="/login" className="nav-link" onClick={logOut}>
-                    LogOut
-                  </a>
-                </li>
+                <ul className="user-section-list">
+                  <li className="nav-item user-section-info">
+                    <img src="favicon.jpg" alt="user-img" className="user-section-img" />
+                    <Link to="/profile" className="nav-link">
+                      {currentUser.username}
+                    </Link>
+                  </li>
+                  <li className="nav-item user-section-text">
+                    <a href="/login" className="nav-link" onClick={logOut}>
+                      LogOut
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           ) : (
@@ -272,24 +277,32 @@ const NavbarWrapper = styled.div`
     align-items: center;
     margin-left: 50px;
 
-    .user-img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
-
-    .user-name {
-      font-size: 16px;
-      color: white;
-    }
-
     .nav-item {
       list-style: none;
-      margin-right: 1.5rem;
 
       .nav-link {
         color: white;
+      }
+    }
+
+    .user-section-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-end;
+      align-items: center;
+
+      .user-section-info {
+        display:flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+
+        .user-section-img {
+          width: 50px;
+          height: 50px;
+        }
       }
     }
   }
@@ -299,7 +312,7 @@ const NavbarWrapper = styled.div`
     color: white;
   }
 
-  @media screen and (max-width: 1050px) {
+  @media screen and (max-width: 1125px) {
     .navbar-right-section {
       display: flex;
       justify-content: flex-end;
@@ -308,11 +321,34 @@ const NavbarWrapper = styled.div`
     }
 
     .user-section {
-      margin-left: 20px;
+      margin-left: 10px;
+
+      .user-section-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        align-items: center;
+  
+        .user-section-info {
+          display:flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: center;
+          align-items: center;
+          margin-right: 10px;
+
+          .user-section-img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+          }
+        }
+      }
     }
   }
 
-  @media screen and (min-width: 1050px) {
+  @media screen and (min-width: 1125px) {
     .navbar-show-btn {
       display: none;
     }
@@ -332,11 +368,11 @@ const NavbarWrapper = styled.div`
       align-items: center;
       justify-content: space-between;
     }
-    .nav-item {
-      margin-left: 6px;
-    }
     .navbar-nav {
       display: flex;
+      .nav-item {
+        margin-left: 10px;
+      }
     }
     .navbar-hide-btn {
       display: none;
@@ -362,7 +398,7 @@ const NavbarWrapper = styled.div`
     }
   }
 
-  @media screen and (min-width: 1255px) {
+  @media screen and (min-width: 1350px) {
     .nav-link {
       padding-right: 16px;
       padding-left: 16px;

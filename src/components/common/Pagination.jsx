@@ -15,6 +15,7 @@ const Pagination = ({ pageHandler, nextPage, prevPage, currentPage }) => {
     <PaginationWrapper className="d-flex align-items-center justify-content-center">
       <button
         type="button"
+        aria-label="arrow-left"
         className={`prev-btn fw-6 text-uppercase text-white d-flex align-items-center ${
           prevPage === null ? "disabled" : ""
         }`}
@@ -25,6 +26,7 @@ const Pagination = ({ pageHandler, nextPage, prevPage, currentPage }) => {
       </button>
       <button
         type="button"
+        aria-label="arrow-right"
         className={`next-btn fw-6 text-uppercase text-white d-flex align-items-center ${
           nextPage === null ? "disabled" : ""
         }`}

@@ -27,6 +27,7 @@ const Tabs = ({ data }) => {
             <button
               type="button"
               className="tabs-buttons-close bg-white d-flex align-items-center justify-content-center"
+              aria-label="tab-close"
               onClick={tabButtonsHandler}
             >
               <AiOutlineMenu size={22} />
@@ -42,6 +43,7 @@ const Tabs = ({ data }) => {
                   <button
                     className="text-white"
                     type="button"
+                    aria-label="tab-item"
                     onClick={() => tabClickHandler(item?.id)}
                   >
                     {item?.name}
