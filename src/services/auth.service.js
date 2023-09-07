@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const API_URL = "http://localhost:8080/api/auth/";
-const API_URL = "https://gamers-server.onrender.com/api/auth/";
+const API_URL = "http://localhost:8080/api/auth/";
+// const API_URL = "https://gamers-server.onrender.com/api/auth/";
 
 const register = (username, email, password, roles) => {
   return axios
@@ -10,8 +10,6 @@ const register = (username, email, password, roles) => {
       email,
       password,
       roles,
-    }).then((response) => {
-      console.log("Success:", response.data);
     })
     .catch((error) => {
       console.log("Error:", error);
