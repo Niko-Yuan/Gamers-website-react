@@ -12,7 +12,6 @@ import AuthService from "../services/auth.service";
 export const register = (username, email, password) => (dispatch) => {
   return AuthService.register(username, email, password, ["user"])
     .then((response) => {
-      console.log("auth.js Response:", response);
       dispatch({
         type: REGISTER_SUCCESS,
       });
@@ -23,12 +22,7 @@ export const register = (username, email, password) => (dispatch) => {
       return Promise.resolve();
     })
     .catch((error) => {
-      console.log("AuthService.register rejected", error); // Debugging log
-      if (error.response) {
-        console.log("Error Data:", error.response.data);
-        console.log("Error Status:", error.response.status);
-        console.log("Error Headers:", error.response.headers);
-      }
+      // console.log("AuthService.register rejected", error); // Debugging log
       const message =
         (error.response &&
           error.response.data &&
