@@ -134,7 +134,11 @@ const Navbar = () => {
               <div className="user-section">
                 <ul className="user-section-list">
                   <li className="nav-item user-section-info">
-                    <img src="favicon.jpg" alt="user-img" className="user-section-img" />
+                    <img
+                      src="favicon.jpg"
+                      alt="user-img"
+                      className="user-section-img"
+                    />
                     <Link to="/profile" className="nav-link">
                       {currentUser.username}
                     </Link>
@@ -150,16 +154,18 @@ const Navbar = () => {
           ) : (
             <div className="navbar-right-section">
               <div className="user-section">
-                <li className="nav-item">
-                  <Link to="/login" className="nav-link">
-                    Login
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/register" className="nav-link">
-                    Sign Up
-                  </Link>
-                </li>
+                <ul className="user-section-list">
+                  <li className="nav-item user-section-text user-login">
+                    <Link to="/login" className="nav-link">
+                      Login
+                    </Link>
+                  </li>
+                  <li className="nav-item user-section-text user-signup">
+                    <Link to="/register" className="nav-link">
+                      Sign Up
+                    </Link>
+                  </li>
+                </ul>
               </div>
             </div>
           )}
@@ -293,7 +299,7 @@ const NavbarWrapper = styled.div`
       align-items: center;
 
       .user-section-info {
-        display:flex;
+        display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: center;
@@ -303,6 +309,10 @@ const NavbarWrapper = styled.div`
           width: 50px;
           height: 50px;
         }
+      }
+
+      .user-login {
+        margin-right: 20px;
       }
     }
   }
@@ -329,9 +339,9 @@ const NavbarWrapper = styled.div`
         flex-wrap: nowrap;
         justify-content: flex-end;
         align-items: center;
-  
+
         .user-section-info {
-          display:flex;
+          display: flex;
           flex-direction: row;
           flex-wrap: nowrap;
           justify-content: center;
