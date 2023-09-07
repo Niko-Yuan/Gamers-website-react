@@ -22,7 +22,7 @@ export const register = (username, email, password) => (dispatch) => {
       return Promise.resolve();
     })
     .catch((error) => {
-      console.log("AuthService.register rejected", error); // Debugging log
+      // console.log("AuthService.register rejected", error); // Debugging log
       const message =
         (error.response &&
           error.response.data &&
