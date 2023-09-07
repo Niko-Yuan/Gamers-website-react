@@ -10,7 +10,7 @@ import {
   setSidebarOn,
   setSidebarOff,
 } from "../../redux/store/sidebarSlice";
-import { logo_image } from "../../utils/images";
+import { logo_image, user_image } from "../../utils/images";
 import { logout } from "../../actions/auth";
 import { clearMessage } from "../../actions/message";
 
@@ -135,7 +135,7 @@ const Navbar = () => {
                 <ul className="user-section-list">
                   <li className="nav-item user-section-info">
                     <img
-                      src="favicon.jpg"
+                      src={user_image}
                       alt="user-img"
                       className="user-section-img"
                     />

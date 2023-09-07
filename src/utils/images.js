@@ -11,6 +11,7 @@ import game_details_image from "../assets/images/game_details_image.png";
 import loader from "../assets/images/loader.gif";
 import store_image from "../assets/images/store_image.png";
 import logo_image from "../assets/images/logo.svg";
+import user_image from "../assets/images/user_img.jpg";
 
 const sliderImages = [
   slider_img_1,
@@ -30,4 +31,5 @@ export {
   loader,
   store_image,
   logo_image,
+  user_image,
 };
