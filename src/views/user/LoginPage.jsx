@@ -73,8 +73,8 @@ const LoginPage = () => {
   const handleDemoLogin = async () => {
     try {
       await dispatch(login("demoUser", "demoUser"));
-      navigate("/home");
-      window.location.reload();
+      // navigate("/home");
+      // window.location.reload();
     } catch (error) {
       console.error("Error during dispatch:", error);
       setLoading(false);
