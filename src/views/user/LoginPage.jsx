@@ -70,6 +70,19 @@ const LoginPage = () => {
     }
   };
 
+  const handleDemoLogin = () => {
+    setUsername("ezma");
+    setPassword("123456");
+    dispatch(login("ezma", "123456"))
+      .then(() => {
+        navigate("/home");
+        window.location.reload();
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  };
+
   if (isLoggedIn) {
     return <Navigate to="/home" />;
   }
@@ -202,6 +215,17 @@ const LoginPage = () => {
                   <span className="spinner-border spinner-border-sm"></span>
                 )}
                 <span>Login</span>
+              </button>
+            </div>
+
+            <div className="form-group">
+              <button
+                type="button"
+                aria-label="btn-demo"
+                className="demo-btn"
+                onClick={handleDemoLogin}
+              >
+                Demo
               </button>
             </div>
 
@@ -348,6 +372,26 @@ const LoginPageWrapper = styled.div`
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  .demo-btn {
+    background-color: #e0e0e0;
+    color: #333;
+    text-transform: uppercase;
+    border: 2px solid #aaa;
+    border-radius: 12px;
+    margin: 10px auto;
+    display: block;
+    transition: all 0.3s ease;
+    width: 50%;
+    height: 40px;
+    font-size: 18px;
+    padding: 5px 15px;
+
+    &:hover {
+      background-color: #aaa;
+      color: white;
     }
   }
 `;
