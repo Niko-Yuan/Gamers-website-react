@@ -93,7 +93,6 @@ const RegisterPage = () => {
   };
 
   const handleRegister = (e) => {
-    console.log("handleRegister start");
     e.preventDefault();
     setSuccessful(false);
     form.current.validateAll();
@@ -110,18 +109,18 @@ const RegisterPage = () => {
     }
   };
 
-  const particlesInit = useCallback(async (engine) => {
-    await loadSlim(engine);
-  }, []);
+  // const particlesInit = useCallback(async (engine) => {
+  //   await loadSlim(engine);
+  // }, []);
 
-  const particlesLoaded = useCallback(async (container) => {
-    await console.log(container);
-  }, []);
+  // const particlesLoaded = useCallback(async (container) => {
+  //   await console.log(container);
+  // }, []);
 
   return (
     <RegisterPageWrapper>
       <div className="register-page-card w-100">
-        <Particles
+        {/* <Particles
           id="tsparticles"
           init={particlesInit}
           loaded={particlesLoaded}
@@ -194,7 +193,7 @@ const RegisterPage = () => {
             },
             detectRetina: true,
           }}
-        />
+        /> */}
         <div className="card card-container">
           <img
             src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
