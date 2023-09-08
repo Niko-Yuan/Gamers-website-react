@@ -10,8 +10,6 @@
   <b>This was a website built to showcase my technical skills, web design skills.</b>
 </p>
 
-👉 Live Demo: <a href='https://gamers-nkbr.onrender.com' target="_blank" rel="noopener noreferrer">Live Demo</a> <br />
-👉 Back-end server: <a href='https://github.com/Niko-Yuan/Gamers-website-node.js' target="_blank" rel="noopener noreferrer">Source Code</a>
 
 <h3>Build with:</h3>
 
@@ -25,6 +23,15 @@
 » Git <br />
 » GitHub <br />
 » Api: <a href='https://rawg.io/apidocs' target="_blank" rel="noopener noreferrer">RAWG Api</a>
+
+👉 Live Demo: <a href='https://gamers-nkbr.onrender.com' target="_blank" rel="noopener noreferrer">Live Demo</a> <br />
+👉 Back-end server: <a href='https://github.com/Niko-Yuan/Gamers-website-node.js' target="_blank" rel="noopener noreferrer">Source Code</a>
+
+<h3 align='center'>Video Demo 📹</h3>
+
+<div align='center'>
+    <iframe width="560" height="315" src="https://youtu.be/UsklC5055Hs" frameborder="0" allowfullscreen></iframe>
+</div>
 
 <h2>Screenshots of the Project 📸</h2>
 <br/>
