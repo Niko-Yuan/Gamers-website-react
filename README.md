@@ -28,10 +28,7 @@
 👉 Back-end server: <a href='https://github.com/Niko-Yuan/Gamers-website-node.js' target="_blank" rel="noopener noreferrer">Source Code</a>
 
 <h3 align='center'>Video Demo 📹</h3>
-
-<div align='center'>
-    <iframe width="560" height="315" src="https://youtu.be/UsklC5055Hs" frameborder="0" allowfullscreen></iframe>
-</div>
+[Watch Video Demo](https://youtu.be/UsklC5055Hs)
 
 <h2>Screenshots of the Project 📸</h2>
 <br/>
